@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "950912931300",
+    "project_id": "petcompanion-133d9",
+    "storage_bucket": "petcompanion-133d9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:950912931300:android:d325459c326f3cdef2a3f1",
+        "android_client_info": {
+          "package_name": "com.example.pet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "950912931300-gku6hkip8qb1bats7r3oufig6rmbm17k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaPGkQKHwojV9tmDnxE5rff6e_zV6BBKk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "950912931300-gku6hkip8qb1bats7r3oufig6rmbm17k.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "950912931300-ipgomhc57mlhh4n14363a05rvsuuae5e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.pet"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:950912931300:android:8cf5016fb28a2e5bf2a3f1",
+        "android_client_info": {
+          "package_name": "com.example.pet_com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "950912931300-gku6hkip8qb1bats7r3oufig6rmbm17k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaPGkQKHwojV9tmDnxE5rff6e_zV6BBKk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "950912931300-gku6hkip8qb1bats7r3oufig6rmbm17k.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "950912931300-ipgomhc57mlhh4n14363a05rvsuuae5e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.pet"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
