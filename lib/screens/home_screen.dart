@@ -28,9 +28,8 @@ class HomeScreen extends ConsumerWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Welcome To PetCompanion, ${user?.fullName.split('').first?? 'Lets go find your friend'} 👋',
-                            style: GoogleFonts.fredoka(fontSize: 26, fontWeight: FontWeight.w600, color: const Color(0xFF2C1810))),
-                        ],
+                       Text('Welcome To PetCompanion, ${user?.fullName ?? 'Pet Lover'} 👋',
+                       style: GoogleFonts.fredoka(fontSize: 26, fontWeight: FontWeight.w600, color: const Color(0xFF2C1810))),],
                       ),
                     ),
                   ],
@@ -184,18 +183,21 @@ class HomeScreen extends ConsumerWidget {
         ),
       ),
       
-      bottomNavigationBar: AppBottomNav(
-        currentIndex: 0,
-        onTap: (i) {
-          if (i == 0) return;
-  switch (i) {
-      case 1: context.push('/browse'); break;
-      case 2: context.push('/create'); break;
-      case 3: context.push('/my-applications'); break;
-      case 4: context.push('/profile'); break;
-  }
-},
-      ),
+bottomNavigationBar: AppBottomNav(
+  currentIndex: 0,
+  onTap: (i) {
+    if (i == 0) return; 
+    
+    switch (i) {
+      case 1: 
+        context.push('/browse'); 
+        break;
+      case 2: 
+        context.push('/profile'); 
+        break;
+    }
+  },
+),
     );
   }
 }

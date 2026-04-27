@@ -26,7 +26,7 @@ class _BrowseScreenState extends ConsumerState<BrowseScreen> {
     final postsAsync = ref.watch(allPostsProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Cari Hewan'), leading: IconButton(icon: const Icon(Icons.arrow_back_ios_new), onPressed: () => context.pop())),
+      appBar: AppBar(title: const Text('Find Your Pet'), leading: IconButton(icon: const Icon(Icons.arrow_back_ios_new), onPressed: () => context.pop())),
       body: Column(
         children: [
           
@@ -101,18 +101,15 @@ class _BrowseScreenState extends ConsumerState<BrowseScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: AppBottomNav(
-        currentIndex: 1,
-        onTap: (i) {
-          switch (i) {
-            case 0: context.go('/home'); break;
-            case 1: break;
-            case 2: context.push('/create'); break;
-            case 3: context.push('/my-applications'); break;
-            case 4: context.push('/profile'); break;
-          }
-        },
-      ),
+     
+bottomNavigationBar: AppBottomNav(
+  currentIndex: 1,
+  onTap: (i) {
+    if (i == 1) return;
+    if (i == 0) context.go('/home');
+    if (i == 2) context.go('/profile');
+  },
+),
     );
   }
 }

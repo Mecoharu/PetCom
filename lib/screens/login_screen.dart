@@ -36,13 +36,13 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   String _friendlyError(String e) {
     if (e.contains('user-not-found') || e.contains('wrong-password') || e.contains('invalid-credential')) return 'Email or password incorrect';
     if (e.contains('invalid-email')) return 'Invalid email format';
-    return 'Try again';
+    return 'Success';
   }
 
   void _showError(String msg) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(msg, style: GoogleFonts.nunito(fontWeight: FontWeight.w600)),
-      backgroundColor: Colors.red.shade600,
+      backgroundColor: const Color.fromARGB(255, 239, 118, 116),
       behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
     ));
