@@ -28,6 +28,7 @@ class _ApplyScreenState extends ConsumerState<ApplyScreen> {
   void dispose() { _phone.dispose(); _reason.dispose(); _additional.dispose(); super.dispose(); }
 
   Future<void> _submit() async {
+    
     if (!_form.currentState!.validate()) return;
     setState(() => _loading = true);
     try {
@@ -61,15 +62,15 @@ class _ApplyScreenState extends ConsumerState<ApplyScreen> {
               children: [
                 const Text('🎉', style: TextStyle(fontSize: 64)),
                 const SizedBox(height: 16),
-                Text('Permohonan Terkirim!', style: GoogleFonts.fredoka(fontSize: 24, fontWeight: FontWeight.w600)),
+                Text('Request Submitted', style: GoogleFonts.fredoka(fontSize: 24, fontWeight: FontWeight.w600)),
                 const SizedBox(height: 8),
-                Text('Permohonan adopsi ${post.petName} telah dikirim. Tunggu konfirmasi dari pemilik ya!',
+                Text('Adopting request ${post.petName} Submitted!',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.nunito(color: const Color(0xFF8B5E3C), height: 1.5)),
                 const SizedBox(height: 24),
                 ElevatedButton(
                   onPressed: () { Navigator.pop(context); context.pop(); context.pop(); },
-                  child: const Text('Kembali ke Beranda'),
+                  child: const Text('Back to Home'),
                 ),
               ],
             ),
@@ -77,7 +78,7 @@ class _ApplyScreenState extends ConsumerState<ApplyScreen> {
         );
       }
     } catch (e) {
-      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Gagal: $e'), backgroundColor: Colors.red));
+      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Fails: $e'), backgroundColor: Colors.red));
     } finally {
       if (mounted) setState(() => _loading = false);
     }
@@ -89,7 +90,7 @@ class _ApplyScreenState extends ConsumerState<ApplyScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Form Adopsi'),
+        title: const Text('Adopsi application'),
         leading: IconButton(icon: const Icon(Icons.arrow_back_ios_new), onPressed: () => context.pop()),
       ),
       body: Form(
@@ -125,7 +126,7 @@ class _ApplyScreenState extends ConsumerState<ApplyScreen> {
               const SizedBox(height: 24),
 
               // Applicant info 
-              Text('Data Pemohon', style: GoogleFonts.nunito(fontSize: 13, fontWeight: FontWeight.w700)),
+              Text('Applicant information', style: GoogleFonts.nunito(fontSize: 13, fontWeight: FontWeight.w700)),
               const SizedBox(height: 10),
               Container(
                 padding: const EdgeInsets.all(14),
@@ -140,7 +141,7 @@ class _ApplyScreenState extends ConsumerState<ApplyScreen> {
               ),
               const SizedBox(height: 16),
 
-              AppTextField(controller: _phone, label: 'Phone number / WhatsApp *', hint: '08xx-xxxx-xxxx', keyboardType: TextInputType.phone, prefixIcon: Icons.phone_outlined,
+              AppTextField(controller: _phone, label: 'Phone number / WhatsApp *', keyboardType: TextInputType.phone, prefixIcon: Icons.phone_outlined,
                 validator: (v) => v?.isEmpty == true ? 'Mobile phone number is required' : null),
               const SizedBox(height: 16),
 
@@ -170,7 +171,7 @@ class _ApplyScreenState extends ConsumerState<ApplyScreen> {
               Container(
                 decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(14), border: Border.all(color: const Color(0xFFEDD5C0))),
                 child: CheckboxListTile(
-                  title: Text('Sudah memiliki hewan peliharaan lain', style: GoogleFonts.nunito(fontWeight: FontWeight.w600, fontSize: 14)),
+                  title: Text('Have another pet', style: GoogleFonts.nunito(fontWeight: FontWeight.w600, fontSize: 14)),
                   value: _hasPets,
                   onChanged: (v) => setState(() => _hasPets = v!),
                   activeColor: const Color(0xFFE8622A),
@@ -180,8 +181,8 @@ class _ApplyScreenState extends ConsumerState<ApplyScreen> {
               ),
               const SizedBox(height: 16),
 
-              AppTextField(controller: _reason, label: 'Reason to Adopt *', maxLines: 4, prefixIcon: Icons.favorite_outline,
-                validator: (v) { if (v?.isEmpty == true) return 'required field'; if ((v?.length ?? 0) < 20) return 'Minimal 20 character'; return null; }),
+              AppTextField(controller: _reason, label: 'Reason to Adopt *', maxLines: 4,
+                validator: (v) { if (v?.isEmpty == true) return 'required field'; if ((v?.length ?? 0) < 5) return 'Minimal character'; return null; }),
               const SizedBox(height: 14),
 
 

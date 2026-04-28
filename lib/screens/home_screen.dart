@@ -144,7 +144,7 @@ class HomeScreen extends ConsumerWidget {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(20, 24, 20, 8),
                 child: SectionTitle(
-                  title: 'Find your new home🐾',
+                  title: 'Find your pet friend🐾',
                   actionLabel: 'See all',
                   onAction: () => context.push('/browse'),
                 ),
@@ -168,8 +168,12 @@ class HomeScreen extends ConsumerWidget {
                       (_, i) => PetCard(post: posts[i], onTap: () => context.push('/post/${posts[i].id}')),
                       childCount: posts.take(6).length,
                     ),
+                    
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2, crossAxisSpacing: 12, mainAxisSpacing: 12, childAspectRatio: 0.72,
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 12,
+                    mainAxisSpacing: 12,
+                    childAspectRatio: 0.85,
                     ),
                   ),
                 );

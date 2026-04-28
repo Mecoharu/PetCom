@@ -95,11 +95,11 @@ class _ApplicationCard extends StatelessWidget {
             const Divider(height: 1),
             const SizedBox(height: 12),
 
-            _InfoRow('📱', 'HP/WA', application.applicantPhone),
+            _InfoRow('📱', 'Phone number', application.applicantPhone),
             const SizedBox(height: 6),
-            _InfoRow('🏠', 'Hunian', application.housingType),
+            _InfoRow('🏠', 'Housing', application.housingType),
             const SizedBox(height: 6),
-            _InfoRow('🐾', 'Punya Hewan Lain', application.hasPetsAlready ? 'Ya' : 'Tidak'),
+            _InfoRow('🐾', 'Have another pet', application.hasPetsAlready ? 'Yes' : 'No'),
             const SizedBox(height: 12),
 
             Text('Reason:', style: GoogleFonts.nunito(fontWeight: FontWeight.w700, fontSize: 13)),

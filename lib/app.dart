@@ -16,7 +16,7 @@ import 'screens/my_applications_screen.dart';
 import 'screens/post_applications_screen.dart';
 import 'screens/apply_screen.dart';
 import 'screens/profile_screen.dart';
-import 'screens/edit_profile_screen.dart';
+//import 'screens/edit_profile_screen.dart';
 
 class PetCompanionApp extends ConsumerWidget {
   const PetCompanionApp({super.key});
@@ -56,7 +56,7 @@ class PetCompanionApp extends ConsumerWidget {
         GoRoute(path: '/my-posts', builder: (_, __) => const MyPostsScreen()),
         GoRoute(path: '/my-applications', builder: (_, __) => const MyApplicationsScreen()),
         GoRoute(path: '/profile', builder: (_, __) => const ProfileScreen()),
-        GoRoute(path: '/edit-profile', builder: (_, __) => const EditProfileScreen()),
+        //GoRoute(path: '/edit-profile', builder: (_, __) => const EditProfileScreen()),
       ],
     );
 

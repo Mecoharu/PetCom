@@ -118,7 +118,7 @@ class PetCard extends StatelessWidget {
           border: Border.all(color: const Color(0xFFEDD5C0), width: 1.5),
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFFE8622A).withValues(alpha: 0.6),
+              color: const Color(0xFFE8622A).withValues(alpha: 0.15),
               blurRadius: 12,
               offset: const Offset(0, 4),
             ),
@@ -128,33 +128,62 @@ class PetCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Photo
-            ClipRRect(
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(18)),
-              child: AspectRatio(
-                aspectRatio: compact ? 1 : 4 / 3,
-                child: post.photoUrls.isNotEmpty
-                    ? Image.network(post.photoUrls.first, fit: BoxFit.cover,
-                        errorBuilder: (_, __, ___) => _placeholderImg(post))
-                    : _placeholderImg(post),
+            Expanded(
+              child: ClipRRect(
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(18)),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: post.photoUrls.isNotEmpty
+                      ? Image.network(
+                          post.photoUrls.first,
+                          fit: BoxFit.cover,
+                          errorBuilder: (_, __, ___) => _placeholderImg(post),
+                        )
+                      : _placeholderImg(post),
+                ),
               ),
             ),
 
+            // Info — hanya nama + type
             Padding(
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.fromLTRB(12, 10, 12, 12),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
                 children: [
+                  Text(
+                    post.petName,
+                    style: GoogleFonts.fredoka(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: const Color(0xFF2C1810),
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(height: 4),
                   Row(
                     children: [
-                      Expanded(
-                        child: Text(post.petName,
-                            style: GoogleFonts.fredoka(
-                                fontSize: 18, fontWeight: FontWeight.w600,
-                                color: const Color(0xFF2C1810)),
-                            maxLines: 1, overflow: TextOverflow.ellipsis),
+                      Text(
+                        post.typeEmoji,
+                        style: const TextStyle(fontSize: 12),
                       ),
+                      const SizedBox(width: 4),
+                      Expanded(
+                        child: Text(
+                          post.typeLabel,
+                          style: GoogleFonts.nunito(
+                            fontSize: 12,
+                            color: const Color(0xFF8B5E3C),
+                            fontWeight: FontWeight.w600,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      // Badge available
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                         decoration: BoxDecoration(
                           color: post.isAvailable
                               ? const Color(0xFF4CAF50).withValues(alpha: 0.12)
@@ -164,26 +193,14 @@ class PetCard extends StatelessWidget {
                         child: Text(
                           post.statusLabel,
                           style: GoogleFonts.nunito(
-                            fontSize: 10, fontWeight: FontWeight.w700,
+                            fontSize: 9,
+                            fontWeight: FontWeight.w700,
                             color: post.isAvailable
                                 ? const Color(0xFF2E7D32)
                                 : Colors.grey.shade600,
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: 4),
-                  Text('${post.typeLabel} • ${post.breed.isNotEmpty ? post.breed : 'Mixed'}',
-                      style: GoogleFonts.nunito(fontSize: 12, color: const Color(0xFF8B5E3C))),
-                  const SizedBox(height: 8),
-                  Row(
-                    children: [
-                      _Chip('${post.genderEmoji} ${post.genderLabel}'),
-                      const SizedBox(width: 6),
-                      _Chip('🎂 ${post.ageLabel}'),
-                      const SizedBox(width: 6),
-                      _Chip('📍 ${post.location}'),
                     ],
                   ),
                 ],
@@ -205,25 +222,7 @@ class PetCard extends StatelessWidget {
   }
 }
 
-class _Chip extends StatelessWidget {
-  final String label;
-  const _Chip(this.label);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-      decoration: BoxDecoration(
-        color: const Color(0xFFFFF3E8),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: const Color(0xFFEDD5C0)),
-      ),
-      child: Text(label,
-          style: GoogleFonts.nunito(fontSize: 10, fontWeight: FontWeight.w600,
-              color: const Color(0xFF8B5E3C))),
-    );
-  }
-}
 
 //BottomNavBar 
 class AppBottomNav extends StatelessWidget {
@@ -267,26 +266,37 @@ class SectionTitle extends StatelessWidget {
 
   const SectionTitle({super.key, required this.title, this.actionLabel, this.onAction});
 
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(title, style: Theme.of(context).textTheme.titleLarge),
-        if (actionLabel != null)
-          TextButton(
-            onPressed: onAction,
-            child: Text(actionLabel!,
-                style: GoogleFonts.nunito(
-                    color: const Color(0xFFE8622A),
-                    fontWeight: FontWeight.w500, fontSize: 8)),
+
+@override
+Widget build(BuildContext context) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Text(
+        title,
+        style: GoogleFonts.fredoka(
+          fontSize: 20, 
+          fontWeight: FontWeight.w600, 
+          color: const Color(0xFF2C1810)
+        ),
+      ),
+      if (actionLabel != null)
+        TextButton(
+          onPressed: onAction,
+          child: Text(
+            actionLabel!,
+            style: GoogleFonts.nunito(
+              fontWeight: FontWeight.w700, 
+              color: const Color(0xFFE8622A)
+            ),
           ),
-      ],
-    );
-  }
+        ),
+    ],
+  );
+}
 }
 
-//LoadingOverlay 
+
 class LoadingWidget extends StatelessWidget {
   const LoadingWidget({super.key});
   @override
@@ -297,7 +307,7 @@ class LoadingWidget extends StatelessWidget {
   }
 }
 
-// ─── EmptyState ───────────────────────────────────────────────────────────────
+//EmptyState
 class EmptyState extends StatelessWidget {
   final String emoji;
   final String title;

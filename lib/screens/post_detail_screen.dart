@@ -192,7 +192,7 @@ class PostDetailScreen extends ConsumerWidget {
                     OutlinedButton.icon(
                       onPressed: () => context.push('/post/${p.id}/applications'),
                       icon: const Icon(Icons.people_outline),
-                      label: Text('Lihat ${p.applicantIds.length} application'),
+                      label: Text('See ${p.applicantIds.length} applicant'),
                       style: OutlinedButton.styleFrom(
                         side: const BorderSide(color: Color(0xFFE8622A), width: 2),
                         foregroundColor: const Color(0xFFE8622A),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:go_router/go_router.dart';
+
 import '../services/auth_service.dart';
 import '../widgets/widgets.dart';
 
@@ -14,7 +15,7 @@ class ProfileScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profil Akun'),
+        title: const Text('Profile'),
         centerTitle: true,
       ),
       body: Center(
@@ -40,7 +41,7 @@ class ProfileScreen extends ConsumerWidget {
               ),
               const SizedBox(height: 24),
 
-              // Menampilkan Email Akun
+              
               Text(
                 user?.email ?? 'Email not found',
                 style: GoogleFonts.nunito(

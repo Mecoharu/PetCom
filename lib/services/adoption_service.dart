@@ -78,7 +78,6 @@ class AdoptionService {
   // CREATE Post
   Future<String> createPost({
     required AdoptionPost post,
-    // 🔥 REMOVED: required List<File> images,
   }) async {
     // Just save the post directly to Firestore Database
     await _db
@@ -110,7 +109,6 @@ class AdoptionService {
 
   // DELETE Post
   Future<void> deletePost(AdoptionPost post) async {
-    // 🔥 REMOVED: Loop that deletes images from Firebase Storage
 
     final apps = await _db
         .collection('applications')
@@ -149,9 +147,9 @@ class AdoptionService {
 
     await NotificationService.showLocalNotification(
       id: application.id.hashCode,
-      title: '🐾 Ada Permintaan Adopsi!',
+      title: '🐾 Adoption Request!',
       body:
-          '${application.applicantName} ingin mengadopsi ${application.petName}',
+          '${application.applicantName} want to adopt ${application.petName}',
     );
 
     return application.id;
