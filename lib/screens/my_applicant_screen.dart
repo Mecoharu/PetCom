@@ -44,18 +44,7 @@ class MyApplicationsScreen extends ConsumerWidget {
         loading: () => const LoadingWidget(),
         error: (e, _) => Center(child: Text('Error: $e')),
       ),
-      bottomNavigationBar: AppBottomNav(
-        currentIndex: 3,
-        onTap: (i) {
-          switch (i) {
-            case 0: context.go('/home'); break;
-            case 1: context.push('/browse'); break;
-            case 2: context.push('/create'); break;
-            case 3: break;
-            case 4: context.push('/profile'); break;
-          }
-        },
-      ),
+     
     );
   }
 }

@@ -26,8 +26,7 @@ class AppUser {
     required this.totalAdoptions,
     required this.createdAt,
   });
-
-  factory AppUser.fromFirestore(DocumentSnapshot doc) {
+factory AppUser.fromFirestore(DocumentSnapshot doc) {
     final d = doc.data() as Map<String, dynamic>;
     return AppUser(
       uid: doc.id,
@@ -40,7 +39,10 @@ class AppUser {
       fcmToken: d['fcmToken'],
       totalPosts: d['totalPosts'] ?? 0,
       totalAdoptions: d['totalAdoptions'] ?? 0,
-      createdAt: (d['createdAt'] as Timestamp).toDate(),
+      
+      createdAt: d['createdAt'] != null 
+          ? (d['createdAt'] as Timestamp).toDate() 
+          : DateTime.now(),
     );
   }
 

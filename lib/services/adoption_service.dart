@@ -79,7 +79,6 @@ class AdoptionService {
   Future<String> createPost({
     required AdoptionPost post,
   }) async {
-    // Just save the post directly to Firestore Database
     await _db
         .collection('adoption_posts')
         .doc(post.id)
@@ -227,7 +226,7 @@ AdoptionPost buildPost({
         ageMonths: ageMonths,
         gender: gender,
         description: description,
-        photoUrls: [], // Data gambar dikelola melalui Firestore
+        photoUrls: [], 
         isVaccinated: isVaccinated,
         isNeutered: isNeutered,
         location: location,

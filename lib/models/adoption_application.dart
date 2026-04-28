@@ -37,9 +37,9 @@ class AdoptionApplication {
 
   String get statusLabel {
     switch (status) {
-      case ApplicationStatus.pending: return 'Waiting';
-      case ApplicationStatus.approved: return 'Accepted';
-      case ApplicationStatus.rejected: return 'Rejected';
+      case ApplicationStatus.pending: return 'pending';
+      case ApplicationStatus.approved: return 'approved';
+      case ApplicationStatus.rejected: return 'rejected';
     }
   }
 
@@ -60,8 +60,12 @@ class AdoptionApplication {
       status: ApplicationStatus.values.firstWhere(
           (e) => e.name == d['status'],
           orElse: () => ApplicationStatus.pending),
-      appliedAt: (d['appliedAt'] as Timestamp).toDate(),
-      updatedAt: (d['updatedAt'] as Timestamp).toDate(),
+      appliedAt: d['appliedAt'] != null 
+    ? (d['appliedAt'] as Timestamp).toDate() 
+    : DateTime.now(),
+updatedAt: d['updatedAt'] != null 
+    ? (d['updatedAt'] as Timestamp).toDate() 
+    : DateTime.now(),
     );
   }
 

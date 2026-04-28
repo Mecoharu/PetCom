@@ -95,8 +95,9 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
   }
 
   Future<void> _save() async {
-    if (!_form.currentState!.validate()) return;
-
+  print('SAVE — images: ${_images.length}, existingUrls: ${_existingUrls.length}, existing: $_existing');
+  if (!_form.currentState!.validate()) return;
+  
    
 if (_images.isEmpty && _existingUrls.isEmpty) {
   _showSnack('Please add photo');
@@ -288,7 +289,6 @@ if (_images.isEmpty && _existingUrls.isEmpty) {
               const SizedBox(height: 14),
 
             
-
               // Location 
               AppTextField(
                 controller: _location,

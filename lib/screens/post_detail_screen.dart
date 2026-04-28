@@ -107,7 +107,7 @@ class PostDetailScreen extends ConsumerWidget {
                   Text('${p.typeLabel} • ${p.breed.isNotEmpty ? p.breed : 'Mixed'}', style: Theme.of(context).textTheme.bodyMedium),
                   const SizedBox(height: 16),
 
-                  // Info row
+                  
                   Row(
                     children: [
                       _InfoBox(emoji: '🎂', label: 'Age', value: p.ageLabel),

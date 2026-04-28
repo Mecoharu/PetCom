@@ -52,7 +52,7 @@ class _BrowseScreenState extends ConsumerState<BrowseScreen> {
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
-                      _FilterChip(label: 'Semua', selected: _filterType == null, onTap: () => setState(() => _filterType = null)),
+                      _FilterChip(label: 'All', selected: _filterType == null, onTap: () => setState(() => _filterType = null)),
                       _FilterChip(label: ' Dog', selected: _filterType == PetType.dog, onTap: () => setState(() => _filterType = _filterType == PetType.dog ? null : PetType.dog)),
                       _FilterChip(label: ' Cat', selected: _filterType == PetType.cat, onTap: () => setState(() => _filterType = _filterType == PetType.cat ? null : PetType.cat)),
                       _FilterChip(label: ' Bird', selected: _filterType == PetType.bird, onTap: () => setState(() => _filterType = _filterType == PetType.bird ? null : PetType.bird)),
